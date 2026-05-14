@@ -1,4 +1,8 @@
 (function(Scratch){
+	if(!Scratch.extensions.unsandboxed) {
+		throw new Error("DECtalk must be run unsandboxed");
+	}
+
 	const prefix = "http://localhost:8000";
 	let Module, speak, speak_init;
 	let g_buffer = {};
