@@ -1,5 +1,5 @@
 (function(Scratch){
-	const prefix = "https://raw.githubusercontent.com/NishiOwO/tw-dectalk/refs/heads/master";
+	const prefix = "https://cdn.jsdelivr.net/gh/nishiowo/tw-dectalk";
 
 	class DECtalk {
 		getInfo() {
@@ -23,21 +23,23 @@
 
 		speak(args) {
 			return new Promoise(function (res, rej){
-				const wasm = await fetch(prefix + "/dtc.wasm");
+				fetch(prefix + "/dtc.wasm").then(function (wasm){
+					var Module = {
+						wamsBinary: wasm.arrayBuffer(),
+						onRuntimeInitialized: async function(){
+							console.log("DECtalk loaded");
+						}
+					};
 
-				var Module = {
-					wamsBinary: wasm.arrayBuffer(),
-					onRuntimeInitialized: async function(){
-						console.log("DECtalk loaded");
-					}
-				};
-
-				const script = document.createElement("script");
-				script.src = prefix + "/dtc.js";
-				document.body.appendChild(script);
+					const script = document.createElement("script");
+					script.src = prefix + "/dtc.js";
+					document.body.appendChild(script);
+				}).catch(function (){
+					rej();
+				});
 			});
 		}
 	};
 
-	Scrath.extensions.register(new DECtalk());
+	Scratch.extensions.register(new DECtalk());
 })(Scratch);
