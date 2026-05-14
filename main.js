@@ -9,7 +9,6 @@
 		throw new Error("DECtalk must be run unsandboxed");
 	}
 
-	const prefix = "http://localhost:8000";
 	let Module, speak, speak_init;
 	let g_buffer = {};
 	let embedded = 0;
@@ -110,15 +109,6 @@
 
 		if(embedded){
 			init(res);
-		}else{
-			const script = document.createElement("script");
-			script.src = prefix + "/dtc.js";
-			script.onload = function() {
-				console.log("DECtalk has been loaded");
-
-				init(res);
-			};
-			document.body.appendChild(script);
 		}
 	});
 })(Scratch);
