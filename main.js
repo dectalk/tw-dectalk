@@ -2,7 +2,7 @@
 // ID: dectalk
 // Description: Use DECtalk.
 // By: NishiOwO <https://github.com/nishiowo>
-// License: BSD-3
+// License: BSD-3-Clause
 
 (function(Scratch){
  	"use strict";
