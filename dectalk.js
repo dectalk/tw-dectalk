@@ -1,5 +1,5 @@
 // Name: DECtalk
-// ID: ???
+// ID: dectalk
 // Description: Use DECtalk
 // By: NishiOwO <https://github.com/nishiowo>
 // License: BSD-3
@@ -4841,7 +4841,8 @@ embedded = 1;
 						text: Scratch.translate("Speak [TEXT]"),
 						arguments: {
 							TEXT: {
-								type: Scratch.ArgumentType.STRING
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "Hello"
 							}
 						}
 					}

@@ -42,7 +42,8 @@
 						text: Scratch.translate("Speak [TEXT]"),
 						arguments: {
 							TEXT: {
-								type: Scratch.ArgumentType.STRING
+								type: Scratch.ArgumentType.STRING,
+								defaultValue: "Hello"
 							}
 						}
 					}
