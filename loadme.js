@@ -1,5 +1,5 @@
 (function(Scratch){
-	const prefix = "";
+	const prefix = "https://raw.githubusercontent.com/NishiOwO/tw-dectalk/refs/heads/master";
 
 	class DECtalk {
 		getInfo() {
