@@ -2,6 +2,9 @@
 	const prefix = "http://localhost:8000";
 	let Module, speak, speak_init;
 	let g_buffer = {};
+	let embedded = 0;
+
+	/* EMBED WASM STUFF HERE */
 
 	window.onDECtalkAudioCallback = function(tts, buffer, length, phoneme) {
 		let arr_r = new Int16Array(Module.HEAP16.buffer, buffer, length);
@@ -78,11 +81,7 @@
 	};
 
 	new Promise(function(res, rej) {
-		const script = document.createElement("script");
-		script.src = prefix + "/dtc.js";
-		script.onload = async function() {
-			console.log("DECtalk has been loaded");
-			
+		async function init(res) {	
 			Module = await DECtalkMini();
 			speak_init = Module.cwrap("speak_init", null, []);
 			speak = Module.cwrap("speak", "number", ["number"]);
@@ -92,7 +91,19 @@
 			Scratch.extensions.register(new DECtalk());
 
 			res();
-		};
-		document.body.appendChild(script);
+		}
+
+		if(embedded){
+			init(res);
+		}else{
+			const script = document.createElement("script");
+			script.src = prefix + "/dtc.js";
+			script.onload = function() {
+				console.log("DECtalk has been loaded");
+
+				init(res);
+			};
+			document.body.appendChild(script);
+		}
 	});
 })(Scratch);
