@@ -1,7 +1,7 @@
 // Name: DECtalk
 // ID: dectalk
 // Description: Use DECtalk.
-// By: NishiOwO <https://github.com/nishiowo>
+// By: NishiOwO
 // License: BSD-3-Clause
 
 (function(Scratch){
@@ -94,7 +94,7 @@
 	};
 
 	(async function(res) {
-		const DECtalkMini = await Scratch.external.evalAndReturn("", "DECtalkMini");
+		const DECtalkMini = await Scratch.external.evalAndReturn("https://raw.githubusercontent.com/dectalk/tw-dectalk/79a9f2538e7cf712e6fd25d4345fab531c31800b/dtc.js", "DECtalkMini");
 		Module = await DECtalkMini();
 		speak_init = Module.cwrap("speak_init", null, []);
 		speak = Module.cwrap("speak", "number", ["number"]);
