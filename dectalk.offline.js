@@ -4862,7 +4862,7 @@ if (typeof exports === 'object' && typeof module === 'object') {
     speakAndWait(args) {
       return new Promise(function (res, rej) {
         const audioContext = Scratch.vm.runtime.audioEngine.audioContext;
-        const str = Module.stringToNewUTF8(args.WORDS);
+        const str = Module.stringToNewUTF8(args.WORDS.toString());
         const tts = speak(str);
         Module._free(str);
 
