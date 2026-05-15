@@ -15,6 +15,7 @@
 
   let Module, speak, speak_init;
   let g_buffer = {};
+  let g_sources = [];
   let embedded = false;
   var DECtalkMini;
 
@@ -4849,6 +4850,11 @@ if (typeof exports === 'object' && typeof module === 'object') {
               },
             },
           },
+          {
+            opcode: "stopAll",
+            blockType: Scratch.BlockType.COMMAND,
+            text: Scratch.translate("stop all speaking"),
+          },
         ],
       };
     }
@@ -4885,7 +4891,10 @@ if (typeof exports === 'object' && typeof module === 'object') {
         currentSource.buffer = audioBuffer;
         currentSource.connect(audioContext.destination);
 
+        g_sources.push(currentSource);
+
         currentSource.onended = function () {
+          g_sources = g_sources.filter((x) => x != currentSource);
           res();
         };
 
@@ -4893,6 +4902,13 @@ if (typeof exports === 'object' && typeof module === 'object') {
 
         if (g_buffer[tts]) delete g_buffer[tts];
       });
+    }
+
+    stopAll() {
+      for (let i of g_sources) {
+        i.stop();
+      }
+      g_sources = [];
     }
   }
 
