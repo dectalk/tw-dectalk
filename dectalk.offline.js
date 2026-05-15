@@ -4818,6 +4818,7 @@ if (typeof exports === 'object' && typeof module === 'object') {
 } else if (typeof define === 'function' && define['amd'])
   define([], () => DECtalkMini);
 
+embedded = true;
 
   let dtc;
   if (embedded) {
