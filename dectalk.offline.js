@@ -1,8 +1,9 @@
-// Name: DECtalk
+// Name: DECtalk Text to Speech
 // ID: nishiowoDectalk
-// Description: Use DECtalk.
+// Description: Text to speech powered by DECtalk. Does not use an internet connection, so it works offline. English only.
 // By: NishiOwO
 // License: BSD-3-Clause
+// Context: Don't translate "DECtalk" - it's the name of the text-to-speech library.
 
 // Repository is at https://github.com/dectalk/tw-dectalk
 
@@ -4848,7 +4849,7 @@ embedded = true;
 
       return {
         id: "nishiowoDectalk",
-        name: Scratch.translate("DECtalk"),
+        name: Scratch.translate("DECtalk Text to Speech"),
         blockIconURI: blockIconURI,
         color1: "#b3353f",
         blocks: [
@@ -4859,6 +4860,7 @@ embedded = true;
             arguments: {
               WORDS: {
                 type: Scratch.ArgumentType.STRING,
+                // Don't translate - the TTS library needs English to work well
                 defaultValue: "Hello",
               },
             },
