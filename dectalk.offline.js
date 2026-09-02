@@ -4826,7 +4826,7 @@ embedded = true;
     dtc = DECtalkMini;
   } else {
     dtc = await Scratch.external.evalAndReturn(
-      "https://raw.githubusercontent.com/dectalk/tw-dectalk/787c5fef60331d2e92fe7a14575fa2271a9525b7/dtc.js",
+      "https://raw.githubusercontent.com/dectalk/tw-dectalk/b387df5a1133dd08a8f3af94d7899dec3f507fd8/dtc.js",
       "DECtalkMini"
     );
   }
@@ -4877,7 +4877,7 @@ embedded = true;
     speakAndWait(args) {
       return new Promise(function (res, rej) {
         const audioContext = Scratch.vm.runtime.audioEngine.audioContext;
-        const str = Module.stringToNewUTF8(Scratch.Cast.toString(args.WORDS).replace(/[^x00-x7f]+/g, ""));
+        const str = Module.stringToNewUTF8(Scratch.Cast.toString(args.WORDS));
         const tts = speak(str);
         Module._free(str);
 
@@ -4888,6 +4888,7 @@ embedded = true;
           }
         } else {
           res();
+          return;
         }
 
         const audioBuffer = audioContext.createBuffer(1, b, 11025);
