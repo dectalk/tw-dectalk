@@ -8,4 +8,5 @@ emcc -o dtc.js dtc.c \
   -s EXPORTED_RUNTIME_METHODS='["cwrap", "ccall", "stringToNewUTF8", "HEAP16", "addFunction"]' \
   -s MODULARIZE=1 \
   -s ALLOW_TABLE_GROWTH=1 \
+  -s ALLOW_MEMORY_GROWTH=1 \
   -s EXPORT_NAME="DECtalkMini" 
