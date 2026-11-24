@@ -28,7 +28,7 @@
     dtc = DECtalkMini;
   } else {
     dtc = await Scratch.external.evalAndReturn(
-      "https://raw.githubusercontent.com/dectalk/tw-dectalk/b387df5a1133dd08a8f3af94d7899dec3f507fd8/dtc.js",
+      "https://raw.githubusercontent.com/dectalk/tw-dectalk/a89533c28188dfdff5a4f589ab0c63a06ec3cdbf/dtc.js",
       "DECtalkMini"
     );
   }
