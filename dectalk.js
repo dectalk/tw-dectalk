@@ -28,7 +28,7 @@
     tts = TTS;
   } else {
     tts = await Scratch.external.evalAndReturn(
-      "https://raw.githubusercontent.com/dectalk/tw-dectalk/e1e9ee33ddc5dfe3badadd00982d915e9575270c/dist/dectalk.js",
+      "https://raw.githubusercontent.com/dectalk/tw-dectalk/1b336657bd410650b87d3307cac1e1778debaf87/dist/dectalk.js",
       "TTS"
     );
   }
