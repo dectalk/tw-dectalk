@@ -1,8 +1,13 @@
+#ifdef SHARPVOX
+#include <DTCompat.h>
+#else
 #include <epsonapi.h>
+#endif
+
 #include <emscripten.h>
 
 EM_JS(void, js_audio_callback, (void* tts, short* data, long length, int phoneme), {
-	if(window.onDECtalkAudioCallback) window.onDECtalkAudioCallback(tts, data, length, phoneme);
+	if(window.onTTSAudioCallback) window.onTTSAudioCallback(tts, data, length, phoneme);
 });
 
 EMSCRIPTEN_KEEPALIVE short* audio_callback(void* tts, short* data, long length, int phoneme){

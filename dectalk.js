@@ -18,23 +18,23 @@
   let g_buffer = {};
   let g_sources = [];
   let embedded = false;
-  var DECtalkMini;
+  var TTS;
 
   /* DO NOT REMOVE THE COMMENT BELOW!!! */
-  /* EMBED DTC.JS HERE */
+  /* EMBED TTS.JS HERE */
 
-  let dtc;
+  let tts;
   if (embedded) {
-    dtc = DECtalkMini;
+    tts = TTS;
   } else {
-    dtc = await Scratch.external.evalAndReturn(
-      "https://raw.githubusercontent.com/dectalk/tw-dectalk/e1e9ee33ddc5dfe3badadd00982d915e9575270c/dtc.js",
-      "DECtalkMini"
+    tts = await Scratch.external.evalAndReturn(
+      "https://raw.githubusercontent.com/dectalk/tw-dectalk/e1e9ee33ddc5dfe3badadd00982d915e9575270c/dist/dectalk.js",
+      "TTS"
     );
   }
 
   // @ts-ignore
-  window.onDECtalkAudioCallback = function (tts, buffer, length, phoneme) {
+  window.onTTSAudioCallback = function (tts, buffer, length, phoneme) {
     let arr_r = new Int16Array(Module.HEAP16.buffer, buffer, length);
     let arr = new Int16Array(length);
 
@@ -130,7 +130,7 @@
     }
   }
 
-  Module = await dtc();
+  Module = await tts();
   speak_init = Module.cwrap("speak_init", null, []);
   speak = Module.cwrap("speak", "number", ["number"]);
 
