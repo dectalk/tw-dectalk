@@ -1,7 +1,7 @@
 #!/bin/sh
 IFS=""
 
-cat dectalk.js | sed s/DECtalk/SharpVox/g | sed s/dectalk.js/sharpvox.js/g > sharpvox.js
+cat dectalk.js | sed s/DECtalk/SharpVox/g | sed 's/powered by SharpVox/& (previously DECtalk)/' | sed s/dectalk.js/sharpvox.js/g > sharpvox.js
 
 while read a; do
 	if echo "$a" | grep 'EMBED TTS\.JS HERE' >/dev/null; then

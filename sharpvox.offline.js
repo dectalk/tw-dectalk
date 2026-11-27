@@ -1,6 +1,6 @@
 // Name: SharpVox Text to Speech
 // ID: nishiowoDectalk
-// Description: Text to speech powered by SharpVox. Does not use an internet connection, so it works offline. English only.
+// Description: Text to speech powered by SharpVox (previously DECtalk). Does not use an internet connection, so it works offline. English only.
 // By: NishiOwO
 // License: BSD-3-Clause
 // Context: Don't translate "SharpVox" - it's the name of the text-to-speech library.
@@ -2254,7 +2254,7 @@ embedded = true;
     tts = TTS;
   } else {
     tts = await Scratch.external.evalAndReturn(
-      "https://raw.githubusercontent.com/dectalk/tw-dectalk/e1e9ee33ddc5dfe3badadd00982d915e9575270c/dist/sharpvox.js",
+      "https://raw.githubusercontent.com/dectalk/tw-dectalk/1b336657bd410650b87d3307cac1e1778debaf87/dist/sharpvox.js",
       "TTS"
     );
   }
